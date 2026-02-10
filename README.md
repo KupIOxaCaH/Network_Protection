@@ -42,7 +42,7 @@
 
 Событие ICMP Ping Detected — срабатывание пользовательского правила на проверку доступности хоста.
 
-![task1.1]()
+![task1.1](https://github.com/KupIOxaCaH/Network_Protection/blob/main/materials/task1.1.png)
 
 Fail2Ban никак не отреагировал на сканирование.
 
@@ -79,6 +79,24 @@ Fail2Ban никак не отреагировал на сканирование.
 
 #### Решение 2
 
+***Логи Fail2Ban:***
 
+Показывают саму суть атаки (подбор паролей) через события Found.
+
+Подтверждают факт защиты через событие Ban 10.0.2.5.
+
+*Логи Fail2Ban*
+
+![Логи Fail2Ban](https://github.com/KupIOxaCaH/Network_Protection/blob/main/materials/task2.1.png)
+
+***Логи Suricata:***
+
+В начале атаки фиксируют аномалии протокола (SSH invalid banner), характерные для работы брутфорс-утилит.
+
+После срабатывания блокировки фиксируют последствия бана (excessive retransmissions). Атакующий продолжает слать пакеты, но фаервол их отбрасывает (DROP), заставляя TCP-стек атакующего бесконечно повторять отправку.
+
+*Логи Suricata*
+
+![Логи Suricata](https://github.com/KupIOxaCaH/Network_Protection/blob/main/materials/task2.2.png)
 
 ---
